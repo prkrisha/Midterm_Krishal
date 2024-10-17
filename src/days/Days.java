@@ -15,7 +15,6 @@ import java.util.Scanner;
  * then print the week day names. 
  *
  * @author sivagamasrinivasan
- jn 22nd
  */
 public class Days {
 
@@ -25,11 +24,18 @@ public class Days {
     public static void main(String[] args) {
          
     Scanner in =new Scanner(System.in);
-    System.out.println("Enter the day number (one,two,three,four,five) in string");
-    String code = in.next();
-    Weekdays t= new Weekdays();
-    t.nameOfDay(code); 
-    }// TODO code application logic here
-    
-    
+    System.out.println("Enter the day number (one,two,three,four,five,six ,seven) in string");
+    String code = in.next().toUpperCase();
+        
+        try {
+            // Try to convert input into an enum value
+            Weekdays.WeekdaysEnum dayCode = Weekdays.WeekdaysEnum.valueOf(code);
+            Weekdays t = new Weekdays();
+            t.nameOfDay(dayCode); 
+        } catch (IllegalArgumentException e) {
+            System.out.println("Invalid input! Please enter a valid day code (ONE, TWO, THREE, etc.).");
+        }
+    }
 }
+    
+
